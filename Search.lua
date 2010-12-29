@@ -11,6 +11,10 @@ local MAX_SCRAPE_TIME = 30
 local foundlines = {}
 local scrapelines = {}
 
+local function out(frame, msg)
+    frame:AddMessage(msg)
+end
+
 function module:Find(word, all, frame)
     self.longstr = ""
     self.str = ""
@@ -24,7 +28,7 @@ function module:Find(word, all, frame)
 
     if #word <= 1 then
         frame:ScrollToBottom()
-        print("Search term is too short")
+        out(frame, "Search term is too short")
         return
     end
 
@@ -60,7 +64,7 @@ function module:Find(word, all, frame)
         frame:PageUp()
         runtime = time() - starttime
         if runtime >= MAX_SCRAPE_TIME then
-            print("Frame scraping timeout exceeded, results will be incomplete.")
+            out(frame, "Frame scraping timeout exceeded, results will be incomplete.")
             break;
         end
 
@@ -71,13 +75,13 @@ function module:Find(word, all, frame)
     frame:ScrollToBottom()
 
     if all and #foundlines > 0 then
-        print("Find Results:")
+        out(frame, "Find Results:")
 
         for i,v in ipairs(foundlines) do
-            print(v)
+            out(frame, v)
         end
     else
-        print("Not Found")
+        out(frame, "Not Found")
     end
 
     wipe(foundlines)
