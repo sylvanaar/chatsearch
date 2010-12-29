@@ -4,4 +4,6 @@
 ## Title: Chat Search
 ## Notes: Provides search functionality to the chatframes
 
+## Author: Sylvanaar (Sylvaan - Zul'Jin/US-Horde)
+
 Search.lua
