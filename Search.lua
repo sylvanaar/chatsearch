@@ -6,6 +6,8 @@ SlashCmdList["FIND"] = function(msg) module:Find(msg, false) end
 SLASH_FINDALL1 = "/findall"
 SlashCmdList["FINDALL"] = function(msg) module:Find(msg, true) end
 
+local MAX_SCRAPE_TIME = 30
+
 local foundlines = {}
 local scrapelines = {}
 
